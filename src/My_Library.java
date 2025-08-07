@@ -39,7 +39,7 @@ public class My_Library {
     // Kitap arama
 
     public static void searchBook() {
-        System.out.print("Enter the book title to search: ");
+        System.out.print("Search for a book by title: ");
         String search = scanner.nextLine().toLowerCase();
         boolean found = false;
 
@@ -86,7 +86,7 @@ public class My_Library {
     public static void updateBook() {
         System.out.print("Enter the book title to update:");
         String search = scanner.nextLine().toLowerCase();
-        boolean updated = false;
+        // boolean updated = false;
 
         for (Books book : myBooks) {
             if (book.title.toLowerCase().equals(search)) {
@@ -98,13 +98,57 @@ public class My_Library {
                 book.pageCount = scanner.nextInt();
                 scanner.nextLine();
                 System.out.println("✏️ Book updated successfully.");
-                updated = true;
+                //updated = true;
                 break;
+            } else {
+                System.out.println("Book not found.");
             }
         }
 
-        if (!updated) {
+        /*if (!updated) {
             System.out.println("Book not found.");
-        }
+        }*/
     }
+
+    // Kitap ödünç alma
+
+    public static void checkOutBook() {
+        System.out.print("Enter the title of the book to check out: ");
+        String search = scanner.nextLine().toLowerCase();
+
+        for (Books book : myBooks) {
+            if (book.title.toLowerCase().equals(search)) {
+                if (!book.isCheckedOut) {
+                    book.isCheckedOut = true;
+                    System.out.println("✅ Book checked out successfully.");
+                } else {
+                    System.out.println("⚠️ This book is already checked out.");
+                }
+                return;
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
+
+    // Kitap iade etme
+
+    public static void returnBook() {
+        System.out.print("Enter the title of the book to return: ");
+        String search = scanner.nextLine().toLowerCase();
+
+        for (Books book : myBooks) {
+            if (book.title.toLowerCase().equals(search)) {
+                if (book.isCheckedOut) {
+                    book.isCheckedOut = false;
+                    System.out.println("✅ Book returned successfully.");
+                } else {
+                    System.out.println("⚠️ This book was not checked out.");
+                }
+                return;
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
 }

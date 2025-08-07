@@ -1,4 +1,5 @@
 public class Books {
+    public boolean isCheckedOut; // kitap ödünç alındı mı
 
     // Kitap sınıfı
 
