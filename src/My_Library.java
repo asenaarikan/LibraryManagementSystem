@@ -104,10 +104,6 @@ public class My_Library {
                 System.out.println("Book not found.");
             }
         }
-
-        /*if (!updated) {
-            System.out.println("Book not found.");
-        }*/
     }
 
     // Kitap ödünç alma
@@ -120,9 +116,9 @@ public class My_Library {
             if (book.title.toLowerCase().equals(search)) {
                 if (!book.isCheckedOut) {
                     book.isCheckedOut = true;
-                    System.out.println("✅ Book checked out successfully.");
+                    System.out.println("Book checked out successfully.");
                 } else {
-                    System.out.println("⚠️ This book is already checked out.");
+                    System.out.println("This book is already checked out.");
                 }
                 return;
             }
@@ -141,9 +137,9 @@ public class My_Library {
             if (book.title.toLowerCase().equals(search)) {
                 if (book.isCheckedOut) {
                     book.isCheckedOut = false;
-                    System.out.println("✅ Book returned successfully.");
+                    System.out.println("Book returned successfully.");
                 } else {
-                    System.out.println("⚠️ This book was not checked out.");
+                    System.out.println("This book was not checked out.");
                 }
                 return;
             }
